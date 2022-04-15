@@ -15,7 +15,7 @@ appData.describe()
 appData
 
 appVisual=appData[['user','dayofweek','hour','age','numscreens','minigame','used_premium_feature','enrolled','liked']]
-# heatmap to find the corelation between the attributes w.r.t target variable
+#heatmap to find the corelation between the attributes w.r.t target variable
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -46,7 +46,7 @@ for i,j in enumerate(features):
      
 plt.subplots_adjust(hspace=0.5) 
 
-# show corelation barplot 
+#show corelation barplot 
  
 sns.set() 
 plt.figure(figsize = (14,5))
@@ -65,10 +65,10 @@ appData.dtypes
 appData['totaltime']=(appData.enrolled_date - appData.first_open).astype('timedelta64[h]')
 plt.hist(appData['totaltime'].dropna())
 
-# distribution of time taken to enroll
+#distribution of time taken to enroll
 plt.hist(appData['totaltime'].dropna(),range=(0,100))
 
-# maximum customer enroll within 10 hours after the registration 
+#maximum customer enroll within 10 hours after the registration 
 
 **Feature Selection**
 appData.loc[appData.totaltime > 48, 'enrolled']=0
@@ -145,7 +145,7 @@ X_test_sc = sc.transform(X_test)
 
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 
-# Support Vector Machine
+#Support Vector Machine
 
 from sklearn.svm import SVC
 
@@ -155,26 +155,25 @@ y_pred_svc = svc_model.predict(X_test)
  
 accuracy_score(y_test, y_pred_svc)
 
-# train with Standard Scaling dataset
+#train with Standard Scaling dataset
 
 svc_model2 = SVC()
 svc_model2.fit(X_train_sc, y_train)
 y_pred_svc_sc = svc_model2.predict(X_test_sc)
- 
 accuracy_score(y_test, y_pred_svc_sc)
 
 cm_SVM = confusion_matrix(y_test, y_pred_svc_sc)
 sns.heatmap(cm_SVM, annot = True, fmt = 'g')
 plt.title("Confussion Matrix", fontsize = 20)
 
-# Random Forest Classifier
+#Random Forest Classifier
 from sklearn.ensemble import RandomForestClassifier
 rf_model = RandomForestClassifier(n_estimators=10, criterion='entropy', random_state=0)
 rf_model.fit(X_train, y_train)
 y_pred_rf = rf_model.predict(X_test)
  
 accuracy_score(y_test, y_pred_rf)
-# train with Standert Scaling dataset
+#train with Standert Scaling dataset
 rf_model2 = RandomForestClassifier(n_estimators=10, criterion='entropy', random_state=0)
 rf_model2.fit(X_train_sc, y_train)
 y_pred_rf_sc = rf_model2.predict(X_test_sc)
@@ -204,7 +203,7 @@ models.append(('CART', DecisionTreeClassifier()))
 models.append(('NB', GaussianNB()))
 models.append(('SVM', SVC()))
 
-# evaluate each model in turn
+#evaluate each model in turn
 results = []
 names = []
 for name, model in models:
