@@ -5,3 +5,6 @@ import pandas as pd
 
 appData=pd.read_csv("FineTech_appData.csv")
 appData.head(10)
+
+#null values
+appData.isnull().sum()
