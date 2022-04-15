@@ -26,12 +26,8 @@ sns.heatmap(appVisual.corr(), annot = True, cmap =('binary'))
  
 plt.title("Heatmap", fontsize = 25) 
 
-**# we have found thet there is no strong corelation between any attributes.
-# there is little corelation between numscreen and enrolled which mean those customer who enrolled for premimum app saw more screen
-# and similarly between minigame and enrolled.
-# there is slightly negative corelaton between age with enrolled and numscree which mean older customer do not enrolled for premium app and they don't see multiple screen
 
-# Count for enrolled**
+#Count for enrolled
 sns.countplot(appData.enrolled)
 
 print("OUT OF 50000")
